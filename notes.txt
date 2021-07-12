@@ -1,0 +1,8 @@
+to install the same set of dependencies again:
+pip install -r requirements.txt
+
+[2021-0708]
+I've had to edit the following network plan configuration files via:
+sudo nano /etc/netplan/00-installer-config.yaml
+
+I've added a "dhcp4: true" entry under the second (NAT) network interface.

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/default.scss.css') }}">
+<link rel="stylesheet"
+    media="screen and (min-width: 800px)"
+    href="{{ url_for('static', filename='css/large-default.scss.css') }}">
+<link rel="stylesheet"
+    media="screen and (max-width: 799px)"
+    href="{{ url_for('static', filename='css/small-default.scss.css') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- place into body tag for spell check 'contenteditable spellcheck="true"' -->
+</head><body>
+<h2>R&eacute;sum&eacute;</h2>
+<main id="resume">
+    
+    <h3>Skills</h3>
+    <section class="skills">
+        {% for skill in skills %}
+        <div class="skill">
+            <header style="background-color: {{ skill.color }};">{{ skill.name }}</header>
+            <div class="projects">
+                <ul>
+                {% for project in skill.projects %}
+                <li><a href="{{ project.link }}">{{ project.name }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div style="flex-grow: 1;"></div>
+            <div class="blog">
+                <a href="#{{ skill.tag }}">Learning Blog<span class="on-large"> (Updated Jul 5, 2021)</span></a>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+    <h3>Experience</h3>
+    <section class="experiences">
+        {% for exp in experiences %}
+        <div class="experience">
+            <header>
+            <div class="left">
+            <strong>{{ exp.organization }}</strong><br>
+            <em>{{ exp.position }}</em>
+            </div>
+            <div class="right">
+            {{ exp.location }}<br>
+            {{ exp.start_date }} &dash; {{ exp.end_date }}
+            </div>
+            </header>
+            <div class="duties">
+                <ul>
+                {% for duty in exp.duties %}
+                <li>{{ duty }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+    <h3>Education</h3>
+    <section class="education">
+        <div class="left">
+        <strong>{{ education.school }}</strong><br>
+        <em>{{ education.major }}</em>
+        </div>
+        <div class="right">
+        {{ education.location }}<br>
+        {{ education.graduation_date }}
+        </div>
+    </section>
+</main>
+</body></html>

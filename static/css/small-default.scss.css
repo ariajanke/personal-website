@@ -1,0 +1,11 @@
+.on-large {
+  display: none; }
+
+#resume section.skills {
+  flex-direction: column;
+  justify-content: center; }
+
+#resume section.skills .skill {
+  width: 80%; }
+
+/*# sourceMappingURL=small-default.scss.css.map */

@@ -1,0 +1,62 @@
+@mixin two-side-to-siden {
+    display: flex;
+    justify-content: space-between;
+    .left { text-align: left; }
+    .right { text-align: right; }
+}
+
+ul {
+    list-style-type: none;
+    li:before {
+        content: '-';
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+body {
+    text-align: center;
+}
+
+#resume {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px;
+    
+    text-align: center;
+    border-style: solid;
+    border-radius: 15px;
+    
+    section.skills {
+        display: flex;
+        .skill {
+            border-style: solid;
+            border-radius: 0 0 15px 15px;
+            border-width: 2px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            margin: 5px auto;
+            header {
+                text-align: center;
+                padding: 5px;
+            }
+            .blog {
+                text-align: center;
+                margin-bottom: 15px;
+            }
+        }
+    }
+    section.experiences {
+        header {
+            align-items: center;
+            @include two-side-to-siden;
+        }
+        .duties {
+            text-align: left;
+        }
+    }
+    section.education {
+        @include two-side-to-siden;
+    }
+}

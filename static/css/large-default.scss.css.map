@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "large-default.scss.css",
+	"sources": [
+		"../sass/large-default.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,SAAS,CAAC;EACN,OAAO,EAAE,IACb,GAAC;;AACD,AAAA,OAAO,CAAC,OAAO,AAAA,OAAO,CAAC;EACnB,eAAe,EAAE,MAAM;EACvB,SAAS,EAAE,IAAI,GAClB;;AAED,AAAA,OAAO,CAAC,OAAO,AAAA,OAAO,CAAC,MAAM,CAAC;EAC1B,SAAS,EAAE,GAAG,GACjB"
+}

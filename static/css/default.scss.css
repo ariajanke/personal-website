@@ -1,0 +1,52 @@
+ul {
+  list-style-type: none; }
+  ul li:before {
+    content: '-';
+    padding-left: 10px;
+    padding-right: 10px; }
+
+body {
+  text-align: center; }
+
+#resume {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 15px;
+  text-align: center;
+  border-style: solid;
+  border-radius: 15px; }
+  #resume section.skills {
+    display: flex; }
+    #resume section.skills .skill {
+      border-style: solid;
+      border-radius: 0 0 15px 15px;
+      border-width: 2px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      margin: 5px auto; }
+      #resume section.skills .skill header {
+        text-align: center;
+        padding: 5px; }
+      #resume section.skills .skill .blog {
+        text-align: center;
+        margin-bottom: 15px; }
+  #resume section.experiences header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between; }
+    #resume section.experiences header .left {
+      text-align: left; }
+    #resume section.experiences header .right {
+      text-align: right; }
+  #resume section.experiences .duties {
+    text-align: left; }
+  #resume section.education {
+    display: flex;
+    justify-content: space-between; }
+    #resume section.education .left {
+      text-align: left; }
+    #resume section.education .right {
+      text-align: right; }
+
+/*# sourceMappingURL=default.scss.css.map */
