@@ -3,6 +3,7 @@
 
 <head>
 <meta charset="utf-8"/>
+<title>Resume</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/default.scss.css') }}">
 <link rel="stylesheet"
     media="screen and (min-width: 800px)"
@@ -30,7 +31,7 @@
             </div>
             <div style="flex-grow: 1;"></div>
             <div class="blog">
-                <a href="#{{ skill.tag }}">Learning Blog<span class="on-large"> (Updated Jul 5, 2021)</span></a>
+                <a href="/blog/?skill={{ skill.tag }}">Learning Blog<span class="on-large"> (Updated Jul 5, 2021)</span></a>
             </div>
         </div>
         {% endfor %}
