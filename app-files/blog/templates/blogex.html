@@ -4,9 +4,26 @@
 <head>
 <meta charset="utf-8"/>
 <title>Blog</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/cpp.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type='text/javascript'>
+let source_code = `{{ source_code }}`;
+$(document).ready(() => {
+    $('#mycpp-code').html(hljs.highlight(source_code, { language: 'cpp' }).value);
+});
+</script>
+
 </head><body>
 
 <p>Hello!</p>
 <p>{{ content_text }}</p>
 <p>Following tag request {{ tag_request }}.</p>
+<p>Highlight brought to you by: highlight.js</p>
+
+<pre><code class="language-cpp" id="mycpp-code">
+{{ source_code }}
+</code></pre>
+
 </body></html>

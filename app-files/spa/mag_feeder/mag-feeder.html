@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PSOBB Mag Feeder</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--<script src="jquery.js"></script>-->
+<script src="pso-mag-raiser.js"></script>
+<script src="interface.js"></script>
+<script src="unit-tests.js"></script>
+<link rel="stylesheet" href="mag-feeder.css">
+<script>
+$(document).ready(pso_mag_raiser_interface.document_on_ready);
+let hide_others_show = pso_mag_raiser_interface.hide_others_show;
+</script>
+</head>
+<!-- place into body tag for spell check 'contenteditable spellcheck="true"' -->
+<body>
+    <div id="app-menu" class="inner menu-base in-content-menu" style="text-align:center;">
+        <a class="button" href="#" onclick="javascript:hide_others_show('switch-character', this)">Switch<span class="large-only"> Character</span>
+        </a><a class="button" href="#" onclick="javascript:hide_others_show('feed-mag', this)">Feed<span class="large-only"> Mag</span>
+        </a><a class="button" href="#" onclick="javascript:hide_others_show('feed-history', this)"><span class="large-only">Feed </span>History
+        </a><a class="button" href="#" onclick="javascript:hide_others_show('save-load', this)">Info<span class="large-only">rmation</span>
+        </a><a class="button" href="#" id="go-to-app-about" onclick="javascript:hide_others_show('app-about', this)">About</a>
+    </div>
+    <br />
+
+    <div id="switch-character" class="section">
+        
+        <div class="char-info"></div>
+        
+        <div id="switch-char-container">
+            <div id="class-list" style="width:148px;" >
+
+            </div>
+            <div id="section-ids">
+                <div class="left"></div>
+                <div class="mid"></div>
+                <div class="right"></div>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+
+    </div>
+    <div id="feed-mag" style="" class="section">
+        <div class="char-info"></div>
+        <div id="feed-mag-container">
+            
+        <div id="mag-info">
+            <div id="mag-summary" style="text-align:center">Summary for Lv X Mag</div>
+            <div>Sync: <span id="mag-sync">XXX</span><span id="preview-sync"> (+X%)</span> IQ: <span id="mag-iq">XXX</span><span id="preview-iq"> (+X)</span></div>
+            <table>
+                <tr id="mag-def">
+                    <td>DEF</td><td>Lv XXX</td><td>XX%</td>
+                    <td><div class="stat-bar"><!--
+                        --><div id="def-fill"    class="fill"   ></div><!--
+                        --><div id="def-preview" class="preview"></div><!--
+                    --></div></td>
+                </tr>
+                <tr id="mag-pow">
+                    <td>POW</td><td>Lv XXX</td><td>XX%</td>
+                    <td><div class="stat-bar"><!--
+                        --><div id="pow-fill"    class="fill"   ></div><!--
+                        --><div id="pow-preview" class="preview"></div><!--
+                    --></div></td>
+                </tr>
+                <tr id="mag-dex">
+                    <td>DEX</td><td>Lv XXX</td><td>XX%</td>
+                    <td><div class="stat-bar"><!--
+                        --><div id="dex-fill"    class="fill"   ></div><!--
+                        --><div id="dex-preview" class="preview"></div><!--
+                    --></div></td>
+                </tr>
+                <tr id="mag-mind">
+                    <td>MIND</td><td>Lv XXX</td><td>XX%</td>
+                    <td><div class="stat-bar"><!--
+                        --><div id="mind-fill"    class="fill"   ></div><!--
+                        --><div id="mind-preview" class="preview"></div><!--
+                    --></div></td>
+                </tr>
+            </table>
+            <div style="clear: both">Photon blasts:<table style="margin: 0 auto 0 auto">
+                <tr><th>Left</th><th>Mid</th><th>Right</th></tr>
+                <tr><td id="pb-left" ><div class="image-holder"><img src="magr/blank.png" alt=""></div></td><!--
+                 --><td id="pb-mid"  ><div class="image-holder"><img src="magr/blank.png" alt=""></div></td><!--
+                 --><td id="pb-right"><div class="image-holder"><img src="magr/blank.png" alt=""></div></td></tr>
+            </table></div>
+            
+        </div>
+        <div id="selected-item">
+            Selected Item:<br>
+            <img alt="" src="magr/blank-item.png" /><br>
+            <span class="name">None</span><br>
+            <div><a class="mul-left button">x1</a><br><a class="mul-mid button">Lv +1</a><br><a class="mul-right button">Lv +4</a></div>
+        </div>
+            
+        </div>
+        <!--<br style="clear:both;" />-->
+        <div id="item-list"></div>
+        </div><!-- feeder container -->
+    
+    </div>
+    <!-- switch to sematic tags later? c:? -->
+    <div class="section" id="feed-history">
+        <h3>Feed History</h3>
+        <p>Each link will take you back to <strong>after</strong> you fed your mag that item.</p>
+        <a id="jump-to-beginning">Jump to Beginning</a>
+        <div class="links">
+        </div>
+    </div>
+    <div class="section" id="save-load">
+        <div>
+            <input type="text" value="" placeholder="filename" id="save-filename">
+            <a href="#" id="save-link" class="button">Save</a>
+            <a id="save-js" href="#" download="mag.json" style="display:none"><span></span></a>
+        </div><div>
+            <!--<div id="load-file-path" class="file-path">/media/ramdisk/somereallylongfilepath/toseehowitlooks/onthesaveloadsection/somepath/mag3.json</div>-->
+            <span id="loaded-file-progress">Nothing loaded yet.</span><a href="#" class="button"><label for="loaded-file">Load</label></a>
+            <input class="button" type="file" id="loaded-file" style="width:0;height:0;opacity:0;border-width:0px;">
+            
+        </div>
+        <div>
+            Your Mag's in game item code:<pre id="mag-item-code">XXXXXXXX,XXXXXXXX,XXXXXXXX,XXXXXXXX</pre>
+        </div>
+        <div id="mag-raise-costs">This is a new Mag, and can be obtained via a rare drop or creating a new character.<!--It will take X hours, XX minutes, XXXXXXXX meseta to raise your MAG.--></div>
+    <!--why is this here? <p class="out">
+    </p>-->
+    </div>
+    <div class="section" id="app-about">
+        <h3>Mag Feeder Web App</h3>
+        <p>Preview mag feed plans or explore possible mags for PSO in the fraction of the time it
+           takes to feed one in game. So far there are accuracy problems. If you'd like to improve this
+           app, feel free to send suggestions, corrections, and feature requests. I am aware of the
+           presence of Magatama. The motivation of developing this app is more personal. My hope is that this
+           project may help me out of my depressive state.</p>
+        <h3>Core Features</h3>
+        <ul>
+        <li>Character Selection</li>
+        <li>Item Feeding</li>
+        <li><strong>(planned)</strong> Accurate to in game mag feeding</li>
+        </ul>
+        <h3>Additional Features</h3>
+        <ul>
+        <li>Feed History</li>
+        <li>Save/Load mags</li>
+        <li>Feed Item preview</li>
+        <li><strong>(planned)</strong> Mag Cells</li>
+        
+        </ul>
+        <p>Phantasy Star Online is Intellectual Property of SEGA / SonicTeam. The author of this SPA 
+           is not in any way affiliated with or endorsed by either of the aforementioned companies.</p>
+        <h3>Legal / License</h3>
+        <p>Copyright &copy; A. Janke 2021</p>
+        <p>This file is part of Mag Feeder Web App.</p>
+
+        <p>Mag Feeder Web App is free software: you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation, either version 3 of the License, or
+        (at your option) any later version.</p>
+
+        <p>Mag Feeder Web App is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+        GNU General Public License for more details.</p>
+
+        <p>You should have received a copy of the GNU General Public License
+        along with Mag Feeder Web App. If not, see &lt;<a href="https://www.gnu.org/licenses/" target="blank_">https://www.gnu.org/licenses/</a>&gt;.</p>
+    
+    </div>
+    
+</body>
+</html>

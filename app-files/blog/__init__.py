@@ -1,5 +1,7 @@
-from flask import Flask, Blueprint, render_template, request
+from flask import Flask, Blueprint, render_template, request, Markup
 import html
+'this may have to be done at home also...'
+#import markdown
 blog = Blueprint("blog", __name__, template_folder='templates')
 
 BLOG_TEST_DATA = {
@@ -22,4 +24,11 @@ def show():
         'list all, do not attempt to use "chosen_skill"'
         for tag, str_ in BLOG_TEST_DATA.items():
             sel_content = sel_content + str_ + ' '
-    return render_template('blogex.html', content_text=sel_content, tag_request=(chosen_skill or '(none)'))
+            
+    loaded_source_file = ''
+    '/home/aria/webmain/'
+    with open('app-files/blog/entries/one.md', 'r') as file_:
+        loaded_source_file = file_.read();
+    return render_template('blogex.html', content_text=sel_content, \
+        tag_request=(chosen_skill or '(none)'), source_code=Markup(loaded_source_file))
+

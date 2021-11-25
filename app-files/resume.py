@@ -18,7 +18,7 @@ RESUME_DATA = {
         "color": "#CEF",
         "projects": [{
             "name": _format_squares('Common Utilities[ Library]'),
-            "link": '#'
+            "link": 'https://dev.to/ariajanke/my-common-utilities-library-and-unit-testing-gpn'
         }, {
             "name": _format_squares('GUI[ Library]'),
             "link": '#'
@@ -32,7 +32,7 @@ RESUME_DATA = {
         "color": "#FEC",
         "projects": [{
             "name": 'PSOBB Mag Feeder',
-            "link": '#'
+            "link": 'https://ariajanke.github.io/mag-feeder/mag-feeder.html'
         }, {
             "name": 'Encrypted Text Tool',
             "link": '#'
